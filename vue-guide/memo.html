@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" href="memo.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+    <div id="app" class="app">
+        <div class="head">
+            <span class="title">메모 앱</span>
+            <span class="list-btn" v-if="mode !=='list'" v-on:click="mode = 'list'">&lt;</span>
+        </div>
+        <div class="body">
+            <div class="list" v-if="mode === 'list'">
+                <ul>
+                    <li v-for="m in memos" v-on:click="open(m.id)">{{ m.content }}</li>
+                </ul>
+            </div>
+            <div class='write' v-else>
+                <textarea v-model="memo.content" name="" id="" cols="30" rows="10"></textarea>
+                <button class="save-btn" v-on:click="save()" v-bind:class="{'full':mode === 'write'}">저장</button>
+                <button class="remove-btn" v-on:click="remove()" v-if="mode === 'edit'">삭제</button>
+                <!-- <button class="cancel-btn" v-on:click="cancel()">취소</button> -->
+            </div>
+            <button class="add-btn" v-on:click="write()" v-if="mode === 'list'">+</button>
+        </div>
+    </div>
+    <script src="./memo.js"></script>
+</body>
+</html>

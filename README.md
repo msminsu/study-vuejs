@@ -13,3 +13,14 @@ yarn global add @vue/cli
 ```
  $vue create my-project
 ```
+
+```
+npm install vue-cli -g
+vue init webpack <폴더명>
+cd <폴더명>
+npm install
+npm run dev
+```
+
+
+
